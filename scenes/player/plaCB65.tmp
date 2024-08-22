@@ -1,0 +1,353 @@
+[gd_scene load_steps=47 format=3 uid="uid://frtgj5uj6n7s"]
+
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_dq0rt"]
+[ext_resource type="Animation" uid="uid://580swu75bkg6" path="res://scenes/player/playerAnimations/RESET.res" id="2_ktsl2"]
+[ext_resource type="Animation" uid="uid://bq1gaamwyo1ea" path="res://scenes/player/playerAnimations/idle.res" id="3_qvgsh"]
+[ext_resource type="Animation" uid="uid://dbiwxhjqqqafo" path="res://scenes/player/playerAnimations/in_air.res" id="4_dy3qm"]
+[ext_resource type="Animation" uid="uid://cjihcbgf6347x" path="res://scenes/player/playerAnimations/run.res" id="5_uqns2"]
+[ext_resource type="Animation" uid="uid://cvldq075pnnw5" path="res://scenes/player/playerAnimations/flintlock_aim.res" id="6_bravj"]
+[ext_resource type="Animation" uid="uid://b0p0qmyqg6as1" path="res://scenes/player/playerAnimations/flintlock_shoot.res" id="7_uxe3y"]
+[ext_resource type="Animation" uid="uid://b14fxosguxu7i" path="res://scenes/player/playerAnimations/walk.res" id="8_dnsbo"]
+[ext_resource type="Animation" uid="uid://c1o74vddyg1dy" path="res://scenes/player/playerAnimations/swordAttack1.res" id="9_qufvc"]
+[ext_resource type="PackedScene" uid="uid://pkfmlac7xfae" path="res://scenes/player/playerGear_Scenes/armour/playerWinter/winter_Head.tscn" id="9_wwbiw"]
+[ext_resource type="PackedScene" uid="uid://cp6j2vgxxkd0v" path="res://scenes/player/playerGear_Scenes/longSword.tscn" id="11_bvvvj"]
+[ext_resource type="PackedScene" uid="uid://d0oj72pxi7wqb" path="res://scenes/player/playerGear_Scenes/armour/playerWinter/winter_Right_Hand.tscn" id="11_iev23"]
+[ext_resource type="PackedScene" uid="uid://dyaunbber0x4e" path="res://scenes/player/playerGear_Scenes/armour/playerWinter/winter_Right_Shoulder.tscn" id="12_yp338"]
+[ext_resource type="PackedScene" uid="uid://cjuost8cst6kh" path="res://scenes/player/playerGear_Scenes/armour/playerWinter/winter_Left_Hand.tscn" id="14_7fmnn"]
+[ext_resource type="PackedScene" uid="uid://cf2yiqklalyaa" path="res://scenes/player/playerGear_Scenes/flintlockPistol.tscn" id="14_jgvn7"]
+[ext_resource type="PackedScene" uid="uid://dox8ih24dmnha" path="res://scenes/player/playerGear_Scenes/armour/playerWinter/winter_Left_Shoulder.tscn" id="15_13pv1"]
+[ext_resource type="PackedScene" uid="uid://oqug3mdrl50y" path="res://scenes/player/playerGear_Scenes/armour/playerWinter/winter_Torso.tscn" id="16_b4mnq"]
+[ext_resource type="PackedScene" uid="uid://t6a8qacmxolk" path="res://scenes/player/playerGear_Scenes/armour/playerWinter/winter_Left_Foot.tscn" id="17_hkx61"]
+[ext_resource type="PackedScene" uid="uid://n2ofeo8i6n5b" path="res://scenes/player/playerGear_Scenes/armour/playerWinter/winter_Left_Leg.tscn" id="17_wf4om"]
+[ext_resource type="PackedScene" uid="uid://co3v65jb76vm3" path="res://scenes/player/playerGear_Scenes/armour/playerWinter/winter_Right_Foot.tscn" id="18_hi46x"]
+[ext_resource type="PackedScene" uid="uid://wlg5d7v3nj03" path="res://scenes/player/playerGear_Scenes/armour/playerWinter/winter_Right_Leg.tscn" id="19_66p2e"]
+[ext_resource type="PackedScene" uid="uid://bin1826yyqi48" path="res://scenes/menus/inventory/playerMenu.tscn" id="21_ulrtq"]
+[ext_resource type="PackedScene" uid="uid://bo8x680nsp1ry" path="res://scenes/menus/fps_Counter.tscn" id="22_428v5"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g6ovt"]
+_data = {
+"RESET": ExtResource("2_ktsl2"),
+"flintlock_aim": ExtResource("6_bravj"),
+"flintlock_shoot": ExtResource("7_uxe3y"),
+"idle": ExtResource("3_qvgsh"),
+"in_air": ExtResource("4_dy3qm"),
+"run": ExtResource("5_uqns2"),
+"swordAttack1": ExtResource("9_qufvc"),
+"walk": ExtResource("8_dnsbo")
+}
+
+[sub_resource type="AnimationNodeBlend3" id="AnimationNodeBlend3_0gny3"]
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_8id78"]
+xfade_time = 0.1
+input_0/name = "aiming"
+input_0/auto_advance = false
+input_0/reset = true
+input_1/name = "notAiming"
+input_1/auto_advance = false
+input_1/reset = true
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lk2no"]
+animation = &"flintlock_aim"
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_06fuu"]
+xfade_time = 0.2
+input_0/name = "inAir"
+input_0/auto_advance = false
+input_0/reset = true
+input_1/name = "onGround"
+input_1/auto_advance = false
+input_1/reset = true
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8jfl2"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7hdex"]
+animation = &"in_air"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qbt5p"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oq02i"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_fbppp"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_50vrx"]
+filters = ["pnTorso/pnLeftShoulder", "pnTorso/pnLeftShoulder/pnLeftHand:position", "pnTorso/pnLeftShoulder/pnLeftHand:rotation", "pnTorso/pnLeftShoulder:position", "pnTorso/pnLeftShoulder:rotation"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_elg85"]
+animation = &"flintlock_shoot"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eaw8d"]
+animation = &"swordAttack1"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v6x0x"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_5aoor"]
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_0t0c1"]
+filter_enabled = true
+filters = ["pnTorso/pnLeftShoulder", "pnTorso/pnLeftShoulder/pnLeftHand:position", "pnTorso/pnLeftShoulder/pnLeftHand:rotation", "pnTorso/pnLeftShoulder:position", "pnTorso/pnLeftShoulder:rotation"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_rlxe0"]
+filter_enabled = true
+filters = ["pnTorso/pnRightShoulder/pnRightHand:position", "pnTorso/pnRightShoulder/pnRightHand:rotation", "pnTorso/pnRightShoulder:position", "pnTorso/pnRightShoulder:rotation", "pnTorso:position", "pnTorso:rotation"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_sxeqy"]
+graph_offset = Vector2(-171.287, 365.839)
+nodes/IdleWalkRunBlend/node = SubResource("AnimationNodeBlend3_0gny3")
+nodes/IdleWalkRunBlend/position = Vector2(940, 900)
+nodes/aimTransition/node = SubResource("AnimationNodeTransition_8id78")
+nodes/aimTransition/position = Vector2(840, 1380)
+nodes/aiming/node = SubResource("AnimationNodeAnimation_lk2no")
+nodes/aiming/position = Vector2(370, 1280)
+nodes/airGroundTransition/node = SubResource("AnimationNodeTransition_06fuu")
+nodes/airGroundTransition/position = Vector2(1520, 1000)
+nodes/idle/node = SubResource("AnimationNodeAnimation_8jfl2")
+nodes/idle/position = Vector2(630, 890)
+nodes/inAir/node = SubResource("AnimationNodeAnimation_7hdex")
+nodes/inAir/position = Vector2(1163.76, 825.71)
+nodes/notAiming/node = SubResource("AnimationNodeAnimation_qbt5p")
+nodes/notAiming/position = Vector2(510, 1560)
+nodes/output/position = Vector2(1770, 1060)
+nodes/run/node = SubResource("AnimationNodeAnimation_oq02i")
+nodes/run/position = Vector2(630, 1170)
+nodes/runTimeScale/node = SubResource("AnimationNodeTimeScale_fbppp")
+nodes/runTimeScale/position = Vector2(780, 1180)
+nodes/shootOneShot/node = SubResource("AnimationNodeOneShot_50vrx")
+nodes/shootOneShot/position = Vector2(610, 1300)
+nodes/shooting/node = SubResource("AnimationNodeAnimation_elg85")
+nodes/shooting/position = Vector2(410, 1420)
+nodes/swordAttack1/node = SubResource("AnimationNodeAnimation_eaw8d")
+nodes/swordAttack1/position = Vector2(1210, 1250)
+nodes/walk/node = SubResource("AnimationNodeAnimation_v6x0x")
+nodes/walk/position = Vector2(630, 1030)
+nodes/walkTimeScale/node = SubResource("AnimationNodeTimeScale_5aoor")
+nodes/walkTimeScale/position = Vector2(770, 1030)
+nodes/weaponBlend/node = SubResource("AnimationNodeBlend2_0t0c1")
+nodes/weaponBlend/position = Vector2(1210, 1020)
+nodes/weaponOneShot/node = SubResource("AnimationNodeOneShot_rlxe0")
+nodes/weaponOneShot/position = Vector2(1370.62, 1102.18)
+node_connections = [&"IdleWalkRunBlend", 0, &"idle", &"IdleWalkRunBlend", 1, &"walkTimeScale", &"IdleWalkRunBlend", 2, &"runTimeScale", &"aimTransition", 0, &"shootOneShot", &"aimTransition", 1, &"notAiming", &"airGroundTransition", 0, &"inAir", &"airGroundTransition", 1, &"weaponOneShot", &"output", 0, &"airGroundTransition", &"runTimeScale", 0, &"run", &"shootOneShot", 0, &"aiming", &"shootOneShot", 1, &"shooting", &"walkTimeScale", 0, &"walk", &"weaponBlend", 0, &"IdleWalkRunBlend", &"weaponBlend", 1, &"aimTransition", &"weaponOneShot", 0, &"weaponBlend", &"weaponOneShot", 1, &"swordAttack1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q7qui"]
+bg_color = Color(0.027451, 0.643137, 0.913725, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pvv1a"]
+bg_color = Color(0.992157, 0.243137, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Curve" id="Curve_srsje"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.624402), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rk1wm"]
+radius = 0.38
+height = 1.75
+
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_6gw00"]
+length = 0.51
+
+[node name="Player" type="CharacterBody3D"]
+collision_layer = 9
+collision_mask = 9
+script = ExtResource("1_dq0rt")
+
+[node name="visuals" type="Node3D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="visuals"]
+libraries = {
+"": SubResource("AnimationLibrary_g6ovt")
+}
+autoplay = "idle"
+
+[node name="AnimationTree" type="AnimationTree" parent="visuals"]
+libraries = {
+"": SubResource("AnimationLibrary_g6ovt")
+}
+tree_root = SubResource("AnimationNodeBlendTree_sxeqy")
+anim_player = NodePath("../AnimationPlayer")
+parameters/IdleWalkRunBlend/blend_amount = -1.0
+parameters/aimTransition/current_state = "aiming"
+parameters/aimTransition/transition_request = ""
+parameters/aimTransition/current_index = 0
+parameters/airGroundTransition/current_state = "onGround"
+parameters/airGroundTransition/transition_request = ""
+parameters/airGroundTransition/current_index = 1
+parameters/runTimeScale/scale = 2.0
+parameters/shootOneShot/active = false
+parameters/shootOneShot/internal_active = false
+parameters/shootOneShot/request = 0
+parameters/walkTimeScale/scale = 1.0
+parameters/weaponBlend/blend_amount = 0.0
+parameters/weaponOneShot/active = false
+parameters/weaponOneShot/internal_active = false
+parameters/weaponOneShot/request = 0
+
+[node name="pnTorso" type="Node3D" parent="visuals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0.942474, 0)
+
+[node name="pnHead" type="Node3D" parent="visuals/pnTorso"]
+transform = Transform3D(0.99, 0, 0, 0, 0.99, 0, 0, 0, 0.99, 2.59618e-10, 0.354758, -0.010039)
+
+[node name="winterHead" parent="visuals/pnTorso/pnHead" instance=ExtResource("9_wwbiw")]
+
+[node name="pnRightShoulder" type="Node3D" parent="visuals/pnTorso"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.185, 0)
+
+[node name="pnRightHand" type="Node3D" parent="visuals/pnTorso/pnRightShoulder"]
+transform = Transform3D(0.95, 0, 0, 0, 0.949996, 0, 0, 0, 0.95, 0.12, -0.36, 0)
+
+[node name="pnRightWeaponSlot" type="Node3D" parent="visuals/pnTorso/pnRightShoulder/pnRightHand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.113, -0.014468)
+
+[node name="LongSword" parent="visuals/pnTorso/pnRightShoulder/pnRightHand/pnRightWeaponSlot" instance=ExtResource("11_bvvvj")]
+
+[node name="winterRightHand" parent="visuals/pnTorso/pnRightShoulder/pnRightHand" instance=ExtResource("11_iev23")]
+
+[node name="winterRightShoulder" parent="visuals/pnTorso/pnRightShoulder" instance=ExtResource("12_yp338")]
+
+[node name="pnLeftShoulder" type="Node3D" parent="visuals/pnTorso"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.185, 0)
+
+[node name="pnLeftHand" type="Node3D" parent="visuals/pnTorso/pnLeftShoulder"]
+transform = Transform3D(0.95, 0, 0, 0, 0.95, 0, 0, 0, 0.950001, -0.12, -0.36, 0)
+
+[node name="pnLeftWeaponSlot" type="Node3D" parent="visuals/pnTorso/pnLeftShoulder/pnLeftHand"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.11, 0)
+
+[node name="FlintlockPistol" parent="visuals/pnTorso/pnLeftShoulder/pnLeftHand/pnLeftWeaponSlot" instance=ExtResource("14_jgvn7")]
+
+[node name="winterLeftHand" parent="visuals/pnTorso/pnLeftShoulder/pnLeftHand" instance=ExtResource("14_7fmnn")]
+
+[node name="winterLeftShoulder" parent="visuals/pnTorso/pnLeftShoulder" instance=ExtResource("15_13pv1")]
+
+[node name="winterTorso" parent="visuals/pnTorso" instance=ExtResource("16_b4mnq")]
+
+[node name="pnLeftFoot" type="Node3D" parent="visuals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.16, 0, 0)
+
+[node name="pnLeftLeg" type="Node3D" parent="visuals/pnLeftFoot"]
+transform = Transform3D(1, 0, 0, 0, 0.999248, 0.038754, 0, -0.038754, 0.999248, 0.00500001, 0.124, -7.45058e-08)
+
+[node name="winterLeftLeg" parent="visuals/pnLeftFoot/pnLeftLeg" instance=ExtResource("17_wf4om")]
+
+[node name="winterLeftFoot" parent="visuals/pnLeftFoot" instance=ExtResource("17_hkx61")]
+
+[node name="pnRightFoot" type="Node3D" parent="visuals"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.16, 0, 0)
+
+[node name="pnRightLeg" type="Node3D" parent="visuals/pnRightFoot"]
+transform = Transform3D(1, 0, 0, 0, 0.999249, 0.038754, 0, -0.038754, 0.999249, -0.00500003, 0.124, -1.19209e-07)
+
+[node name="winterRightLeg" parent="visuals/pnRightFoot/pnRightLeg" instance=ExtResource("19_66p2e")]
+
+[node name="winterRightFoot" parent="visuals/pnRightFoot" instance=ExtResource("18_hi46x")]
+
+[node name="cameraMount" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="cameraMount"]
+transform = Transform3D(0.948324, -0.0550994, 0.312484, 0, 0.984808, 0.173648, -0.317305, -0.164675, 0.933917, 0, 0.270261, 0)
+collision_mask = 2
+spring_length = 2.47
+
+[node name="Camera3D" type="Camera3D" parent="cameraMount/SpringArm3D"]
+transform = Transform3D(0.948323, -7.45057e-09, -0.317305, -0.0550994, 0.984808, -0.164675, 0.312484, 0.173648, 0.933916, 0.00300051, 0.00194001, 2.46377)
+current = true
+
+[node name="UI" type="Control" parent="cameraMount/SpringArm3D/Camera3D"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HealthBar" type="ProgressBar" parent="cameraMount/SpringArm3D/Camera3D/UI"]
+layout_mode = 1
+offset_right = 197.0
+offset_bottom = 27.0
+theme_override_styles/background = SubResource("StyleBoxFlat_q7qui")
+theme_override_styles/fill = SubResource("StyleBoxFlat_pvv1a")
+value = 100.0
+
+[node name="crosshair" type="Control" parent="cameraMount/SpringArm3D/Camera3D/UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="reticle" type="Node2D" parent="cameraMount/SpringArm3D/Camera3D/UI/crosshair"]
+
+[node name="Line2D" type="Line2D" parent="cameraMount/SpringArm3D/Camera3D/UI/crosshair/reticle"]
+position = Vector2(4, 0)
+points = PackedVector2Array(0, 0, 17, 0)
+width_curve = SubResource("Curve_srsje")
+default_color = Color(1, 1, 1, 0.639216)
+antialiased = true
+
+[node name="Line2D2" type="Line2D" parent="cameraMount/SpringArm3D/Camera3D/UI/crosshair/reticle"]
+position = Vector2(0, 4)
+rotation = 1.57079
+points = PackedVector2Array(0, 0, 17, 0)
+width_curve = SubResource("Curve_srsje")
+default_color = Color(1, 1, 1, 0.639216)
+antialiased = true
+
+[node name="Line2D3" type="Line2D" parent="cameraMount/SpringArm3D/Camera3D/UI/crosshair/reticle"]
+position = Vector2(-4, 0)
+rotation = 3.14159
+points = PackedVector2Array(0, 0, 17, 0)
+width_curve = SubResource("Curve_srsje")
+default_color = Color(1, 1, 1, 0.639216)
+antialiased = true
+
+[node name="Line2D4" type="Line2D" parent="cameraMount/SpringArm3D/Camera3D/UI/crosshair/reticle"]
+position = Vector2(0, -4)
+rotation = -1.5708
+points = PackedVector2Array(0, 0, 17, 0)
+width_curve = SubResource("Curve_srsje")
+default_color = Color(1, 1, 1, 0.639216)
+antialiased = true
+
+[node name="collisionCapsule" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, 0)
+shape = SubResource("CapsuleShape3D_rk1wm")
+
+[node name="sepRayLeft" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.51, -0.42)
+shape = SubResource("SeparationRayShape3D_6gw00")
+
+[node name="sepRayFL" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.51, -0.42)
+shape = SubResource("SeparationRayShape3D_6gw00")
+
+[node name="sepRayFront" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.51, -0.42)
+shape = SubResource("SeparationRayShape3D_6gw00")
+
+[node name="sepRayFR" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.51, -0.42)
+shape = SubResource("SeparationRayShape3D_6gw00")
+
+[node name="sepRayRight" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.51, -0.42)
+shape = SubResource("SeparationRayShape3D_6gw00")
+
+[node name="checkStairsRayCast" type="RayCast3D" parent="."]
+target_position = Vector3(0, -0.5, 0)
+
+[node name="playerMenu" parent="." instance=ExtResource("21_ulrtq")]
+
+[node name="FPS_Counter" parent="playerMenu" instance=ExtResource("22_428v5")]

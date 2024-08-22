@@ -1,0 +1,16 @@
+[gd_scene load_steps=6 format=3 uid="uid://dygshci2csa6p"]
+
+[ext_resource type="ArrayMesh" uid="uid://5ddexa8l7uab" path="res://assets/models/decorations/banners/bannerRegal_1x3.obj" id="1_wgrvk"]
+[ext_resource type="Material" uid="uid://16axgl0yba6u" path="res://assets/materials/diffuse/brownPastelDIFF2.tres" id="2_qmtqf"]
+[ext_resource type="Material" uid="uid://33xflcsi2pj3" path="res://assets/materials/diffuse/greenDIFF2.tres" id="3_inqi5"]
+[ext_resource type="Material" uid="uid://jr8wpesdcr88" path="res://assets/materials/metallic/goldMET2.tres" id="4_l5mai"]
+[ext_resource type="Material" uid="uid://di7jrwwc4ikou" path="res://assets/materials/metallic/goldMET1.tres" id="4_s87e1"]
+
+[node name="bannerRegal1x3" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_wgrvk")
+surface_material_override/0 = ExtResource("2_qmtqf")
+surface_material_override/1 = ExtResource("3_inqi5")
+surface_material_override/2 = ExtResource("4_s87e1")
+surface_material_override/3 = ExtResource("4_l5mai")

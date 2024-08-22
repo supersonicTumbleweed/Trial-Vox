@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c465v1omdvqfc"]
+
+[ext_resource type="ArrayMesh" uid="uid://djuymqobcqu4r" path="res://assets/models/decorations/plants/fern.obj" id="1_xqwmn"]
+[ext_resource type="Material" uid="uid://33xflcsi2pj3" path="res://assets/materials/diffuse/greenDIFF2.tres" id="2_daraf"]
+
+[node name="Fern" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_xqwmn")
+surface_material_override/0 = ExtResource("2_daraf")

@@ -1,0 +1,504 @@
+[gd_scene load_steps=14 format=3 uid="uid://bin1826yyqi48"]
+
+[ext_resource type="Script" path="res://scripts/inventory/UI.gd" id="1_yg07x"]
+[ext_resource type="Script" path="res://scripts/inventory/inventory.gd" id="2_a624s"]
+[ext_resource type="Texture2D" uid="uid://bcjxs6tvs7440" path="res://assets/textures/templates/tempHelmet.png" id="2_t60bt"]
+[ext_resource type="PackedScene" uid="uid://x3qxv5cjulff" path="res://scenes/menus/inventory/slot/slot.tscn" id="3_rwh5q"]
+[ext_resource type="Texture2D" uid="uid://rhigd5rmay8n" path="res://assets/textures/templates/tempChest.png" id="3_w8bv8"]
+[ext_resource type="Script" path="res://scripts/inventory/character.gd" id="4_k6ifo"]
+[ext_resource type="Texture2D" uid="uid://bmrfipyieq710" path="res://assets/textures/templates/tempRightLeg.png" id="4_pwvny"]
+[ext_resource type="Texture2D" uid="uid://fqth4fvlrk03" path="res://assets/textures/templates/tempRightShoulder.png" id="4_svtxm"]
+[ext_resource type="Texture2D" uid="uid://dsiie63augse4" path="res://assets/textures/templates/tempRightHand.png" id="5_gl8n8"]
+[ext_resource type="Texture2D" uid="uid://cbfspasstnwu6" path="res://assets/textures/templates/tempRightFoot.png" id="5_hc56q"]
+[ext_resource type="PackedScene" uid="uid://drh5mxkvyiqon" path="res://scenes/menus/inventory/slot/passive_slot.tscn" id="5_rii7g"]
+[ext_resource type="Texture2D" uid="uid://bjvq3ukgkonb2" path="res://assets/textures/templates/tempMelee.png" id="6_6qcyq"]
+[ext_resource type="Texture2D" uid="uid://cg5o4lsqlkl3b" path="res://assets/textures/templates/tempGun.png" id="8_so3gk"]
+
+[node name="playerMenu" type="Node2D"]
+
+[node name="UI" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_yg07x")
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 48.0
+anchor_bottom = 27.0
+offset_left = 15.0
+offset_top = 57.0
+offset_right = -39.0001
+offset_bottom = -130.0
+color = Color(0.823529, 0.74902, 0.580392, 0.737255)
+
+[node name="tempHead" type="TextureRect" parent="UI/ColorRect"]
+layout_mode = 0
+offset_left = 261.0
+offset_top = 201.0
+offset_right = 390.0
+offset_bottom = 320.0
+texture = ExtResource("2_t60bt")
+
+[node name="tempChest" type="TextureRect" parent="UI/ColorRect"]
+layout_mode = 0
+offset_left = 264.0
+offset_top = 363.0
+offset_right = 390.0
+offset_bottom = 490.0
+texture = ExtResource("3_w8bv8")
+
+[node name="tempLeftShoulder" type="TextureRect" parent="UI/ColorRect"]
+layout_mode = 0
+offset_left = 394.0
+offset_top = 322.0
+offset_right = 515.0
+offset_bottom = 445.0
+texture = ExtResource("4_svtxm")
+flip_h = true
+
+[node name="tempLeftShoulder2" type="TextureRect" parent="UI/ColorRect"]
+layout_mode = 0
+offset_left = 399.0
+offset_top = 456.0
+offset_right = 520.0
+offset_bottom = 579.0
+texture = ExtResource("5_gl8n8")
+flip_h = true
+
+[node name="tempLeftShoulder3" type="TextureRect" parent="UI/ColorRect"]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 459.0
+offset_right = 251.0
+offset_bottom = 582.0
+texture = ExtResource("5_gl8n8")
+
+[node name="tempLeftShoulder4" type="TextureRect" parent="UI/ColorRect"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 583.0
+offset_right = 130.0
+offset_bottom = 701.0
+texture = ExtResource("6_6qcyq")
+
+[node name="tempRightShoulder" type="TextureRect" parent="UI/ColorRect"]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 324.0
+offset_right = 255.0
+offset_bottom = 447.0
+texture = ExtResource("4_svtxm")
+
+[node name="tempLeftLeg" type="TextureRect" parent="UI/ColorRect"]
+layout_mode = 0
+offset_left = 349.0
+offset_top = 596.0
+offset_right = 475.0
+offset_bottom = 723.0
+texture = ExtResource("4_pwvny")
+flip_h = true
+
+[node name="tempLeftLeg2" type="TextureRect" parent="UI/ColorRect"]
+layout_mode = 0
+offset_left = 528.0
+offset_top = 570.0
+offset_right = 654.0
+offset_bottom = 697.0
+texture = ExtResource("8_so3gk")
+flip_h = true
+
+[node name="tempRightLeg" type="TextureRect" parent="UI/ColorRect"]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 596.0
+offset_right = 300.0
+offset_bottom = 723.0
+texture = ExtResource("4_pwvny")
+
+[node name="tempLeftFoot" type="TextureRect" parent="UI/ColorRect"]
+layout_mode = 0
+offset_left = 349.0
+offset_top = 732.0
+offset_right = 475.0
+offset_bottom = 859.0
+texture = ExtResource("5_hc56q")
+flip_h = true
+
+[node name="tempRightFoot" type="TextureRect" parent="UI/ColorRect"]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 738.0
+offset_right = 301.0
+offset_bottom = 865.0
+texture = ExtResource("5_hc56q")
+
+[node name="inventory" type="GridContainer" parent="UI"]
+layout_mode = 0
+offset_left = 819.0
+offset_top = 202.0
+offset_right = 1855.0
+offset_bottom = 948.0
+columns = 10
+script = ExtResource("2_a624s")
+
+[node name="slot1" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot2" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot3" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot4" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot5" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot6" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot7" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot8" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot9" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot10" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot11" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot12" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot13" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot14" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot15" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot16" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot17" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot18" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot19" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot20" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot21" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot22" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot23" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot24" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot25" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot26" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot27" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot28" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot29" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot30" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot31" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot32" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot33" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot34" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot35" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot36" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot37" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot38" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot39" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot40" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot41" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot42" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot43" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot44" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot45" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot46" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot47" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot48" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot49" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot50" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot51" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot52" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot53" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot54" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot55" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot56" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot57" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot58" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot59" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot60" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot61" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot62" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot63" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot64" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot65" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot66" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot67" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot68" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot69" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="slot70" parent="UI/inventory" instance=ExtResource("3_rwh5q")]
+layout_mode = 2
+
+[node name="character" type="Control" parent="UI"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_k6ifo")
+
+[node name="headSlot" parent="UI/character" instance=ExtResource("5_rii7g")]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 255.0
+offset_right = 400.0
+offset_bottom = 375.0
+slot_type = 1
+
+[node name="torsoSlot" parent="UI/character" instance=ExtResource("5_rii7g")]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 427.0
+offset_right = 400.0
+offset_bottom = 547.0
+slot_type = 2
+
+[node name="leftShoulderSlot" parent="UI/character" instance=ExtResource("5_rii7g")]
+layout_mode = 0
+offset_left = 415.0
+offset_top = 380.0
+offset_right = 535.0
+offset_bottom = 500.0
+slot_type = 3
+
+[node name="rightShoulderSlot" parent="UI/character" instance=ExtResource("5_rii7g")]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 380.0
+offset_right = 265.0
+offset_bottom = 500.0
+slot_type = 4
+
+[node name="rightHandSlot" parent="UI/character" instance=ExtResource("5_rii7g")]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 515.0
+offset_right = 265.0
+offset_bottom = 635.0
+slot_type = 6
+
+[node name="leftHandSlot" parent="UI/character" instance=ExtResource("5_rii7g")]
+layout_mode = 0
+offset_left = 415.0
+offset_top = 515.0
+offset_right = 535.0
+offset_bottom = 635.0
+slot_type = 5
+
+[node name="leftLegSlot" parent="UI/character" instance=ExtResource("5_rii7g")]
+layout_mode = 0
+offset_left = 365.0
+offset_top = 650.0
+offset_right = 485.0
+offset_bottom = 770.0
+slot_type = 7
+
+[node name="leftFootSlot" parent="UI/character" instance=ExtResource("5_rii7g")]
+layout_mode = 0
+offset_left = 365.0
+offset_top = 795.0
+offset_right = 485.0
+offset_bottom = 915.0
+slot_type = 9
+
+[node name="rightLegSlot" parent="UI/character" instance=ExtResource("5_rii7g")]
+layout_mode = 0
+offset_left = 195.0
+offset_top = 650.0
+offset_right = 315.0
+offset_bottom = 770.0
+slot_type = 8
+
+[node name="rightFootSlot" parent="UI/character" instance=ExtResource("5_rii7g")]
+layout_mode = 0
+offset_left = 195.0
+offset_top = 795.0
+offset_right = 315.0
+offset_bottom = 915.0
+slot_type = 10
+
+[node name="meleeSlot" parent="UI/character" instance=ExtResource("5_rii7g")]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 639.0
+offset_right = 145.0
+offset_bottom = 759.0
+slot_type = 11
+
+[node name="gunSlot" parent="UI/character" instance=ExtResource("5_rii7g")]
+layout_mode = 0
+offset_left = 547.0
+offset_top = 633.0
+offset_right = 667.0
+offset_bottom = 753.0
+slot_type = 12
+
+[node name="DMG" type="Label" parent="UI"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 60)
+layout_mode = 0
+offset_left = 220.0
+offset_top = 120.0
+offset_right = 340.0
+offset_bottom = 180.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+
+[node name="DMGLabel" type="Label" parent="UI"]
+custom_minimum_size = Vector2(120, 60)
+layout_mode = 0
+offset_left = 20.0
+offset_top = 120.0
+offset_right = 140.0
+offset_bottom = 180.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Damage:"
+
+[node name="DEF" type="Label" parent="UI"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 60)
+layout_mode = 0
+offset_left = 220.0
+offset_top = 55.0
+offset_right = 340.0
+offset_bottom = 115.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+
+[node name="DEFLabel" type="Label" parent="UI"]
+custom_minimum_size = Vector2(120, 60)
+layout_mode = 0
+offset_left = 20.0
+offset_top = 55.0
+offset_right = 177.0
+offset_bottom = 115.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Defense:
+"
