@@ -42,6 +42,7 @@ To equip items, click and drag an item into the correct slot (a "stop" icon will
 To complete the game, kill all enemies in Level 2.
 
 
+
 Credits:
 
 Daniel O'Neill
