@@ -2,9 +2,10 @@
 
 
 
-# Video
+# Videos
 
 [![TrialVoxTrailer](https://img.youtube.com/vi/dmLDlVRioho/0.jpg)](https://www.youtube.com/watch?v=dmLDlVRioho)
+
 [![TrialVoxTrailer](https://img.youtube.com/vi/kbtCTc8xlCE/0.jpg)](https://www.youtube.com/watch?v=kbtCTc8xlCE)
 
 # Screenshots
