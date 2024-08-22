@@ -1,4 +1,42 @@
-#Trial Vox
+# Project Title: Trial Vox
+
+1
+Name: Daniel O'Neill
+
+Student Number: C22307066
+
+Class Group: Tu858
+
+Github: [[https://github.com/danielo127730](https://github.com/danielo127730/Voxel-RPG)](https://github.com/ZsoltHevesi/Voxel-RPG/tree/my-feature-branch?tab=readme-ov-file)
+
+
+2
+Name: Georgy Kachelkin
+
+Student Number: D22124642
+
+Class Group: TU856
+
+Github: https://github.com/gk355
+
+
+3
+Name: Yan Savioli Castanheira
+
+Student Number: C22371301
+
+Class Group: TU858
+
+Github: https://github.com/Yan-Sav/Yan-Voxel-RPG
+
+4
+Name: Zsolt Hevesi
+
+Student Number: C22387231
+
+Class Group: TU858
+
+Github: https://github.com/ZsoltHevesi
 
 # Video
 
@@ -38,8 +76,67 @@ To equip items, click and drag an item into the correct slot (a "stop" icon will
 
 To complete the game, kill all enemies in Level 2.
 
-by:
-Daniel O'Neill
-Georgy Kachelkin
-Yan Savioli Castanheira
-Zsolt Hevesi
+# How it works:
+The Player controller works by using standard move_and_slide() code similar to the default one that Godot comes with, but we added a script which rotates seperation rays (one block/voxel high) which allow the player to walk up stairs for convenience. The player also has an off-set camera with a collision spring to get the effect that most 3rd person games such as Warframe use, and an Animation Tree to play different animations such as walk, attack and jump.
+
+Code relating to the inventory involves opening the database.json file in AutoLoad (which allows every script in the game to access it) and getting the proterties (such as respective icons, scenes, item ID and stats). When an enemy is killed, they will drop a random item which can be picked up and equipped by the player in the inventory, which will reflect the item properties visually and by taking less damage based on the gear they are wearing.
+
+Enemies work by being Navigation Agents of a Navigation mesh/region. When the player enters a certain radius of an enemy, they will begin following a path while avoiding obstacles to reach the player and begin attacking, if an attack hits the player or an enemy, they will begin taking damage until killed.
+
+The game has various visual settings that are saved between sessions (except for scaling due to issues encountered during development). These are implemented through a .cfg config file that stores every value for every setting, an autoload script which checks for the values in the config and if some are absent, it creates them with default values so the game still runs. Every time a setting is changed, its new value is written to the config file, which is read from by in-game nodes which change their properties based on values recieved.
+
+# List of classes/assets in the project
+
+| Class/asset | Source |
+|-----------|-----------|
+| player.gd | Heavily modified from [reference 1](https://github.com/majikayogames/godot-character-controller-stairs) and [reference 2](https://www.youtube.com/watch?v=EP5AYllgHy8&t=1273s) |
+| e_clanger.gd | Modified from [reference](https://www.youtube.com/watch?v=-juhGgA076E) |
+| guardianEnemy.gd | Modified from [reference](https://www.youtube.com/watch?v=-juhGgA076E) |
+| abstractItem.gd | Modified from [reference](https://pastebin.com/YaPzmyqv) |
+| character.gd | Modified from [reference](https://pastebin.com/iJA2KbCe) |
+| inventory.gd | Modified from [reference](https://pastebin.com/chGct0NK) |
+| passive_slot.gd | Modified from [reference](https://pastebin.com/McWfmCZH) |
+| slot.gd | Modified from [reference](https://pastebin.com/SzuLRxGV) |
+| stats.gd | Modified from [reference](https://pastebin.com/Rdr4ALkK) |
+| UI.gd | Modified from [reference](https://pastebin.com/vTTj9npA) |
+| database.gd | Modified from [reference](https://pastebin.com/jdVUGRP3) |
+| database.json | Heavily modified from [reference](https://pastebin.com/ppZTCirg) |
+
+All other assets are original and either self written, modelled, textured or animated.
+
+# What I am most proud of in the assignment
+
+Each team member
+
+1(Daniel):
+I am proud of being apart of this project and undertaking the challenge that it was. I am proud of my efforts and particularly the efforts of my team.
+
+The specific contributions which i'm most proud of implementing  in the game are the sprint functionality, Audio,  contributions to the health system, implementing a smoother camera using linear interpolation, implementing 3d pathfiding / enemy navigation, introducing damage incurring barriers and pioneering the enemy / player damage system. 
+
+ There were many times when I would struggle to implement a feature. I would spend hours research and attempting to solve the problem. It was stressful but I persevered as did my team which faced similar difficulties and eventually we would overcomes these problems through collaboration and perseverance. I went into this project knowing absoulutely nothing about godot and game design. Despite my lack of knowledge I took on this challenge anyway and I've learned so much from it. The game turned out better than I ever could've imagined compared to where we began.  
+
+2(Georgy Kachelkin):
+I am proud of the project in general. As our first attempt at making a full 3D game, we succeeded in my opinion. At least 90% of features that we planned were implemented, not perfectly, but the game is functional. Very proud of assets that we created ourselves and the systems that we managed to implement (like inventory, settings, winning and failing, combat, etc.). This project gave us invaluable experience in game development.
+
+3(Yan):
+I am proud of having implemented the basic elements of functionality and display for player health which were later refined by Zsolt, Daniel and Georgy, I t isn't a big achievement but I'm happy with how it turned out given this was my first time writing code for a game in gd script.
+
+4(Zsolt Hevesi):
+I am proud of the 100% original assets (player gear, enemies, levels etc.) me and George created through the MagicaVoxel and Blender tools as well as Godot's built-in tools, the original animations created in Godot's animation editor, complex inventory management and database, and the visuals (eg. VoxelGI lighting, materials, refraction etc.).
+
+# What I learned
+
+Each team member
+
+1(Daniel):
+I've learned a lot from this project. It improved my github and git command competency immensely. I learned how to use the godot game engine and gdscript.  I've experienced what it's like to work on complex problems with a team and collaborate on solutions to overcome those problems. I've learned about the process of designing a game and the various elements that go into it. It's given me a greater appreciation for the games that I play and the amount of work that must have went into their creation.
+
+2(Georgy Kachelkin):
+I learned a lot about the workflow and process of developing a game. Next time, I will know how to plan better, how to manage the scale of the project, how to set up communications better. In addition, I now have much more knowledge of Godot Engine and its programming language GDScript. Learned about how game systems should interact with each other, the importance of keeping the code as easy to read as possible and lots of other useful practices in development.
+
+3(Yan):
+I learned that there are various way that you can give a model animations be either through programs like Blender or through websites with pre-built animations and models like Mixamo, when deciding how to go about giving models animations with a website like Mixamo you must ensure that the models has a bone structure already set up and that the model does not have any floating parts which are not connected to the body so it can be imported to the Mixamo website and converted into a standard Mixamo model to have animations given to it. This allows the model to be given any animation that Mixamo has available and when all desired animations have been acquired you can export the the converted model with the animations to use in the game, also if the need to share the same animations between different models arises there is a way to export only the desired animations with the help of Blender so that as long as the models sharing animations are Mixamo models any animations can be shared between them.
+
+4(Zsolt Hevesi):
+This is my first time fully diving into a 3D game engine that is also open source, so everything I contributed to was learned through making this project. I learned things such as Nodes, GDScript, game optimisation, Editor tools (animation, UI elements, materials, input maps etc.) and so much more. As a result of using original assets, I also learned other tools such as MagicaVoxel and Blender for 3D modelling for the first time.
+I learned how to create a fully function Player controller that walks, runs, jumps, climbs stairs, an inventory system with slot types, meaningful item stats, icons and updating the visuals of the player to match the inventory, how to create working pathfinding enemies, level design, and how to manage a small team of developers.
