@@ -6,4 +6,3 @@ func _on_hit_box_area_entered(area):
 		
 		area.get_parent().currentHealth -= 50
 		area.get_parent().meleeImmunity = true
-		print("area entered")

@@ -8,7 +8,6 @@
 [ext_resource type="Material" uid="uid://87k3ka1johal" path="res://assets/materials/diffuse/greyDarkDIFF3.tres" id="6_yv2r5"]
 [ext_resource type="Material" uid="uid://c1abimugnb35y" path="res://assets/materials/diffuse/greyDarkDIFF2.tres" id="7_va0vy"]
 
-
 [node name="winterHead" type="Node3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 

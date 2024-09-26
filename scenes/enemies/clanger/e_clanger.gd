@@ -150,6 +150,7 @@ func _on_area_3d_body_entered(body):
 	if body.name == "Player":
 		# Deal damage to the player
 		body.takeDamage(enemyDamage)
+		print("Enemy Damaged")
 
 
 
