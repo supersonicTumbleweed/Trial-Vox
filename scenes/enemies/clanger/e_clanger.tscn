@@ -264,34 +264,10 @@ tracks/19/keys = {
 tracks/20/type = "value"
 tracks/20/imported = false
 tracks/20/enabled = true
-tracks/20/path = NodePath("enTorso/enRightShoulder/enRightStaff/Area3D:visible")
+tracks/20/path = NodePath("enTorso/enLeftShoulder/enLeftStaff/Area3D/CollisionShape3D:disabled")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/21/type = "value"
-tracks/21/imported = false
-tracks/21/enabled = true
-tracks/21/path = NodePath("enTorso/enLeftShoulder/enLeftStaff/Area3D:visible")
-tracks/21/interp = 1
-tracks/21/loop_wrap = true
-tracks/21/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/22/type = "value"
-tracks/22/imported = false
-tracks/22/enabled = true
-tracks/22/path = NodePath("enTorso/enLeftShoulder/enLeftStaff/Area3D/CollisionShape3D:disabled")
-tracks/22/interp = 1
-tracks/22/loop_wrap = true
-tracks/22/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -904,7 +880,6 @@ animation = &"run"
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_cdo6h"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_w8lwl"]
-graph_offset = Vector2(-546.111, 199.431)
 nodes/IdleRunBLend/node = SubResource("AnimationNodeBlend2_6lybw")
 nodes/IdleRunBLend/position = Vector2(80, 130)
 nodes/attack/node = SubResource("AnimationNodeAnimation_7jdha")
@@ -962,9 +937,6 @@ libraries = {
 autoplay = "idle"
 
 [node name="AnimationTree" type="AnimationTree" parent="visuals"]
-libraries = {
-"": SubResource("AnimationLibrary_2kn50")
-}
 tree_root = SubResource("AnimationNodeBlendTree_w8lwl")
 anim_player = NodePath("../AnimationPlayer")
 parameters/IdleRunBLend/blend_amount = 0.0
