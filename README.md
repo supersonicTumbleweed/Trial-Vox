@@ -1,5 +1,5 @@
 # Trial Vox
-
+![TrialVoxPoster](https://github.com/user-attachments/assets/de71c483-05f6-411e-82f4-6b3e1d913bf6)
 
 
 # Videos
