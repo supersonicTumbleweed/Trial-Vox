@@ -28,6 +28,7 @@ Trial Vox is a stylised 3D action RPG where the player goes through levels fight
 | A | Move left |
 | S | Move backward |
 | D | Move right |
+| SHIFT | Sprint |
 | SPACE | Jump |
 | TAB | Open inventory |
 | Left Mouse Button | Melee Attack |
